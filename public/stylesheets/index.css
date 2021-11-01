@@ -78,24 +78,26 @@ header {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+#no-result {
+  text-align: center;
+  font-size: 2rem;
+  color: #aaa;
+}
+
 @media screen and (max-width: 992px) {
-  
   .card img{
     height: 115px;
   }
 }
 
 @media screen and (max-width: 768px) {
-  
   .restaurant-show-title {
     font-size: 2rem;
   }
 }
 
 @media screen and (max-width: 575px) {
-  
   .card img{
     height: auto;
   }
-  
 }

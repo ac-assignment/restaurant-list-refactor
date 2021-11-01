@@ -15,11 +15,12 @@ app.get('/', (req, res) => {
 
 app.get('/search', (req, res) => {
   const { keyword } = req.query
-  const searchResult = restaurantList.results.filter(r => {
-    return r.name.toLowerCase().includes(keyword.toLowerCase())
-  })
-
-  res.render('index', { restaurantList: searchResult, keyword })
+  const searchResult = restaurantList.results.filter(r => 
+    r.name.toLowerCase().includes(keyword.toLowerCase()) ||
+    r.category.toLowerCase().includes(keyword.toLowerCase())
+  )
+  const isNoResult = searchResult.length === 0
+  res.render('index', { restaurantList: searchResult, keyword, isNoResult })
 })
 
 app.get('/restaurants/:restaurantId', (req, res) => {
