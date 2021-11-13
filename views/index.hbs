@@ -10,16 +10,18 @@
           </div>
         </div>
       </form>
+      <form id="create" action="/restaurants/create" method="GET">
+        <button type="submit" class="btn btn-primary">新增餐廳</button>
+      </form>
     </div>
   </div>
 </div>
-
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
-      <div class="card-columns">
-        {{#each restaurantList}}
-          <a href="/restaurants/{{this.id}}" class="text-secondary">
+      <div class="card-group">
+        {{#each entityList}}
+          <a href="/restaurants/{{this._id}}" class="text-secondary col-4">
             <div class="card mb-3">
               <img class="card-img-top" src="{{this.image}}" alt="Sababa 沙巴巴中東美食">
               <div class="card-body p-3">
@@ -32,6 +34,17 @@
                   <i class="fas fa-star fa-xs"></i>
                 </span>
               </div>
+              <div class="button-group">
+                <form action="/restaurants/{{this._id}}" method="GET">
+                  <button type="submit" class="btn btn-outline-primary">詳細資訊</button>
+                </form>
+                <form action="/restaurants/{{this._id}}/edit" method="GET">
+                  <button type="submit" class="btn btn-outline-primary">編輯</button>
+                </form>
+                <form action="/restaurants/{{this._id}}/delete" method="POST" class="delete">
+                  <button type="submit" class="btn btn-danger">刪除</button>
+                </form>
+              </div>
             </div>
           </a>
         {{/each}}
@@ -42,3 +55,4 @@
     </div>
   </div>
 </div>
+<script src="/javascripts/index.js"></script>

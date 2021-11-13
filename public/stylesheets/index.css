@@ -35,6 +35,15 @@ header {
   color: #9b4b4b;
 }
 
+.search-bar form#create {
+  display: flex;
+}
+
+.search-bar form#create button {
+  margin-left: auto;
+  margin-top: 15px;
+}
+
 .form-control::placeholder {
   color: #aaaaaa;
   font-size: 0.8rem;
@@ -54,14 +63,14 @@ header {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
-.card img{
+.card img {
   height: 180px;
 }
 
-.card-title{
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
+.card-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .restaurant-category {
@@ -82,6 +91,19 @@ header {
   text-align: center;
   font-size: 2rem;
   color: #aaa;
+}
+
+.button-group {
+  display: flex;
+  padding: 8px;
+}
+
+.button-group form {
+  margin-left: 8px;
+}
+
+.button-group form:first-child {
+  margin-left: auto;
 }
 
 @media screen and (max-width: 992px) {

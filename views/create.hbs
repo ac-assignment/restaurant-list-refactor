@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="/stylesheets/form/form.css">
+
+<h1 class="mb-1 restaurant-show-title">新增餐廳</h1>
+<div class="container">
+  <div class="row">
+    <form action="/restaurants" method="POST" id="create-form" class="needs-validation {{#if isAgain}}was-validated{{/if}}" novalidate>
+      <div class="form-group">
+        <label for="name">餐廳名稱</label>
+        <input type="text" class="form-control" id="name" name="name" value="{{entity.name}}" required>
+        <div class="invalid-feedback">必填資訊</div>
+      </div>
+      <div class="form-group">
+        <label for="name_en">餐廳名稱(英文)</label>
+        <input type="text" class="form-control" id="name_en" name="name_en" value="{{entity.name_en}}" required>
+        <div class="invalid-feedback">必填資訊</div>
+      </div>
+      <div class="form-group">
+        <label for="category">類別</label>
+        <input type="text" class="form-control" id="category" name="category" value="{{entity.category}}" required>
+        <div class="invalid-feedback">必填資訊</div>
+      </div>
+      <div class="form-group">
+        <label for="location">地址</label>
+        <input type="text" class="form-control" id="location" name="location" value="{{entity.location}}" required>
+        <div class="invalid-feedback">必填資訊</div>
+      </div>
+      <div class="form-group">
+        <label for="phone">電話</label>
+        <input type="text" class="form-control" id="phone" name="phone" value="{{entity.phone}}" required>
+        <div class="invalid-feedback">必填資訊</div>
+      </div>
+      <div class="form-group">
+        <label for="rating">評價</label>
+        <input type="number" class="form-control" id="rating" name="rating" value="{{entity.rating}}" placeholder="0 ~ 5" step="0.1" min="0" max="5" required>
+        <div class="invalid-feedback">必填資訊</div>
+      </div>
+      <div class="form-group">
+        <label for="image">圖片連結</label>
+        <input type="text" class="form-control" id="image" name="image" required>
+        {{#if isAgain}}
+          <div class="invalid-feedback">圖片連結無效</div>
+        {{else}}
+          <div class="invalid-feedback">必填資訊</div>
+        {{/if}}
+      </div>
+      <div class="form-group">
+        <label for="google_map">Google地圖連結</label>
+        <input type="text" class="form-control" id="google_map" name="google_map" value="{{entity.google_map}}" required>
+        <div class="invalid-feedback">必填資訊</div>
+      </div>
+      <div class="form-group">
+        <label for="description">介紹</label>
+        <textarea class="form-control" id="description" name="description" rows="4" cols="50" required>{{entity.description}}</textarea>
+        <div class="invalid-feedback">必填資訊</div>
+      </div>
+      <button type="submit" class="btn btn-primary">完成</button>
+    </form>
+  </div>
+</div>
+<script src="/javascripts/form/form.js"></script>
