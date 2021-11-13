@@ -4,17 +4,10 @@ const mongoose = require('mongoose')
 const isImageURL = require('image-url-validator').default
 const Restaurant = require('./models/restaurant.js')
 
-mongoose.connect('mongodb://localhost:27017/restaurant_list')
 const app = express()
 const db = mongoose.connection
 const port = 3000
 
-db.on('error', () => {
-  console.log('mongodb error!')
-})
-db.once('open', () => {
-  console.log('mongodb connected!')
-})
 
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
@@ -39,7 +32,12 @@ app.get('/search', async (req, res) => {
     return
   }
   try {
-    const entityList = await Restaurant.find({ name: RegExp(keyword, 'i') }).lean()
+    const resultByName = await Restaurant.find({ name: RegExp(keyword, 'i') }).lean()
+    const resultByCategory = await Restaurant.find({ category: RegExp(keyword, 'i') }).lean()
+    const entityList = [...resultByName, ...resultByCategory].filter((entity, index, result) => {
+      const firstIndex = result.findIndex(x => x._id.toString() === entity._id.toString())
+      return firstIndex === index
+    })
     const isNoResult = entityList.length === 0
     
     res.render('index', { entityList, keyword, isNoResult })
