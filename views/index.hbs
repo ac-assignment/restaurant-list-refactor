@@ -1,7 +1,7 @@
 <div class="container search-bar">
   <div class="search-bar-outer">
     <div class="search-bar-inner">
-      <form action="/search">
+      <form id="search" action="/search" method="GET">
         <h4 class="mb-2">尋找餐廳：</h4>
         <div class="input-group">
           <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" value="{{keyword}}" aria-label="Restaurant Name..." aria-describedby="search-button">
@@ -10,9 +10,17 @@
           </div>
         </div>
       </form>
-      <form id="create" action="/restaurants/create" method="GET">
-        <button type="submit" class="btn btn-primary">新增餐廳</button>
-      </form>
+      <div class="d-flex w-100 mt-4">
+        <form id="create" action="/restaurants/create" method="GET">
+          <button type="submit" class="btn btn-primary">新增餐廳</button>
+        </form>
+        <select id="sort" class="form-control" name="sort" form="search">
+          <option {{#if (isEqual sort 'name_en_asc')}}selected{{/if}} value="name_en_asc">A > Z</option>
+          <option {{#if (isEqual sort 'name_en_desc')}}selected{{/if}} value="name_en_desc">Z > A</option>
+          <option {{#if (isEqual sort 'category_asc')}}selected{{/if}} value="category_asc">類別</option>
+          <option {{#if (isEqual sort 'location_asc')}}selected{{/if}} value="location_asc">地區</option>
+        </select>
+      </div>
     </div>
   </div>
 </div>
@@ -41,7 +49,7 @@
                 <form action="/restaurants/{{this._id}}/edit" method="GET">
                   <button type="submit" class="btn btn-outline-primary">編輯</button>
                 </form>
-                <form action="/restaurants/{{this._id}}/delete" method="POST" class="delete">
+                <form action="/restaurants/{{this._id}}?_method=DELETE" method="POST" class="delete">
                   <button type="submit" class="btn btn-danger">刪除</button>
                 </form>
               </div>

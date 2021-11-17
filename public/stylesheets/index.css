@@ -35,13 +35,9 @@ header {
   color: #9b4b4b;
 }
 
-.search-bar form#create {
-  display: flex;
-}
-
-.search-bar form#create button {
+.search-bar select#sort {
+  width: initial;
   margin-left: auto;
-  margin-top: 15px;
 }
 
 .form-control::placeholder {
@@ -80,7 +76,7 @@ header {
 
 .restaurant-show-title {
   position: relative;
-  top: -100px;
+  top: -130px;
   color: white;
   text-align: center;
   font-size: 3rem;
