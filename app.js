@@ -1,7 +1,7 @@
 const express = require('express')
 const methodOverride = require('method-override')
 const router = require('./routes/index.js')
-const hbs = require('./config/handlebar.js')
+const hbs = require('./config/handlebars.js')
 require('./config/mongoose.js')
 
 const app = express()

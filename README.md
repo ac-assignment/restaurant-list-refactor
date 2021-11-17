@@ -10,6 +10,7 @@
 - 新增餐廳
 - 編輯餐廳
 - 刪除餐廳
+- 排序下拉選單
 ## 開始使用
 1. clone專案
 2. 進入專案資料夾，安裝所需套件
@@ -31,8 +32,10 @@ npm run seed
 ## 開發工具
 - Node.js 14.17.6
 - Express 4.17.1
-- Express-Handlebars 5.3.4
+- Express-Handlebars 6.0.1
 - Bootstrap 4.6.1
 - Font-awesome 5.8.1
 - MongoDB
 - mongoose 6.0.5
+- method-override 3.0.0
+- image-url-validator 1.0.4
